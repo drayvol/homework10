@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
             task1();
             task2();
@@ -17,8 +18,9 @@ public class Main {
         else return (year + " - не високосный год");
     }
     static void task2(){
+        Scanner sc = new Scanner(System.in);
         int clientOS = 0;
-        int deviceYear = 1899;
+        int deviceYear = sc.nextInt();
         System.out.println(checkVersion(clientOS, deviceYear));
     }
     static String checkVersion(int clientOS, int clientDeviceYear){
@@ -29,13 +31,13 @@ public class Main {
         else return ("Установите версию приложения для iOS по ссылке");
     }
     static void task3(){
-        int deliveryDistance = 21;
+        int deliveryDistance = 141;
         System.out.println("Потребуется дней: " +getDeliveryDays(deliveryDistance));
     }
+    static int deliveryDays =1;
     static int getDeliveryDays(int deliveryDistance){
-        int deliveryDays =1;
-        if(deliveryDistance>20) deliveryDays++;
-        if(deliveryDistance>60) deliveryDays++;
-        return deliveryDays;
+        if(deliveryDistance<=20) return deliveryDays;
+        deliveryDays++;
+        return getDeliveryDays(deliveryDistance-40);
     }
 }
